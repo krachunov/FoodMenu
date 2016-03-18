@@ -18,10 +18,13 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	@Column(name = "name")
 	private String name;
+
 	@Column(name = "department")
 	private String department;
+
 	@OneToMany(targetEntity = MyOrder.class, mappedBy = "employee", fetch = FetchType.EAGER)
 	private List<MyOrder> purchase;
 
