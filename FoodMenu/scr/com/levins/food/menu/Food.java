@@ -34,15 +34,18 @@ public class Food {
 	@JoinColumn(name = "food_id")
 	private MyOrder order;
 
+	@Column(name = "totalPrice")
+	private Double totalPrice;
+
 	public Food() {
 	}
 
 	public Food(Date date, String value, Double price, Integer quantity) {
-		// this.id = id;
 		this.date = date;
 		this.value = value;
 		this.price = price;
 		this.quantity = quantity;
+		this.totalPrice = price * quantity;
 	}
 
 	public Long getId() {
