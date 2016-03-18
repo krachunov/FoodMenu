@@ -30,11 +30,13 @@ public class Demo {
 	public static void main(String[] args) {
 		Date date = new Date();
 
-		Employee employee = new Employee("TEO", "IT", new ArrayList<>());
+		Employee employee = new Employee("ico", "IT", new ArrayList<>());
 
 		List<Food> listFood = new ArrayList<Food>();
-		Food food1 = new Food(date, "domati", 10.5, 1);
+		Food food1 = new Food(date, "musaka", 35.2, 1);
+		Food food2 = new Food(date, "chushki", 5.2, 1);
 		listFood.add(food1);
+		listFood.add(food2);
 
 		Double totalAmount = 0d;
 		for (Food food : listFood) {
@@ -65,6 +67,10 @@ public class Demo {
 
 			entityManager.getTransaction().begin();
 			entityManager.persist(food1);
+			entityManager.getTransaction().commit();
+
+			entityManager.getTransaction().begin();
+			entityManager.persist(food2);
 			entityManager.getTransaction().commit();
 
 			entityManager.getTransaction().begin();
