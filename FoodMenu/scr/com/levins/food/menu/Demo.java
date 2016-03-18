@@ -64,11 +64,11 @@ public class Demo {
 			entityManager.getTransaction().commit();
 
 			entityManager.getTransaction().begin();
-			entityManager.persist(purch);
+			entityManager.persist(food1);
 			entityManager.getTransaction().commit();
 
 			entityManager.getTransaction().begin();
-			entityManager.persist(food1);
+			entityManager.persist(purch);
 			entityManager.getTransaction().commit();
 
 			entityManager.close();

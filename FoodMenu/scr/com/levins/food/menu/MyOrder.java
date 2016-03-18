@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -27,7 +28,12 @@ public class MyOrder {
 	@JoinColumn(name = "employeeID")
 	private Employee employee;
 
-	@OneToMany(targetEntity = Food.class, mappedBy = "order", fetch = FetchType.EAGER)
+	// @OneToMany(targetEntity = Food.class, mappedBy = "order", fetch =
+	// FetchType.EAGER)
+	@OneToMany
+	@JoinTable(name = "levins_order", 
+	joinColumns = { @JoinColumn(name = "order_id", referencedColumnName = "id") }, 
+	inverseJoinColumns = { @JoinColumn(name = "food_id", referencedColumnName = "id", unique = true) })
 	private List<Food> listFood;
 
 	@Column(name = "totalPrice")

@@ -30,7 +30,7 @@ public class Food {
 	@Column(name = "count")
 	private Integer quantity;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "food_id")
 	private MyOrder order;
 
