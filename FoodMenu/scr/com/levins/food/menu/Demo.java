@@ -1,6 +1,9 @@
 package com.levins.food.menu;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -27,66 +30,51 @@ public class Demo {
 		return list;
 	}
 
+	// "dd_MM_yyyy" "dd_MM_yyyy':'HH:mm:"
+	public static Date createdDate(String format) {
+		DateFormat df = new SimpleDateFormat(format);
+		Date today = Calendar.getInstance().getTime();
+		String reportDate = df.format(today);
+		// return reportDate;
+		return today;
+	}
+
 	public static void main(String[] args) {
-		Date date = new Date();
+		Date date = createdDate("dd_MM_yyyy':'HH:mm:");
 
-		Employee employee = new Employee("Hristo", "IT", new ArrayList<>());
-
-		List<Food> listFood = new ArrayList<Food>();
-		Food food1 = new Food(date, "banica", 35.2, 1);
-		Food food2 = new Food(date, "boza", 5.2, 1);
-		listFood.add(food1);
-		listFood.add(food2);
-
-		Double totalAmount = 0d;
-		for (Food food : listFood) {
-			totalAmount += food.getPrice();
-		}
-
-		MyOrder purch = new MyOrder(employee, date, listFood, totalAmount);
-		employee.getPurchase().add(purch);
-
-		System.out.println("Employee");
-		System.out.println(employee);
-
-		System.out.println("Purch");
-		System.out.println(employee.getPurchase().get(0));
-
-		System.out.println("Food");
-		System.out.println(food1);
-
-		FoodAction action = new FoodAction();
-		action.addUnit(employee);
-		action.addUnit(food1);
-		action.addUnit(food2);
-		action.addUnit(purch);
-
-		// EntityManagerFactory factory = Persistence
-		// .createEntityManagerFactory("FoodMenu");
-		// try {
+		// Employee employee = new Employee("Teodor", "IT", new ArrayList<>());
 		//
-		// EntityManager entityManager = factory.createEntityManager();
+		// List<Food> listFood = new ArrayList<Food>();
+		// Food food1 = new Food(date, "banica", 35.2, 1);
+		// Food food2 = new Food(date, "boza", 5.2, 1);
+		// listFood.add(food1);
+		// listFood.add(food2);
 		//
-		// entityManager.getTransaction().begin();
-		// entityManager.persist(employee);
-		// entityManager.getTransaction().commit();
-		//
-		// entityManager.getTransaction().begin();
-		// entityManager.persist(food1);
-		// entityManager.getTransaction().commit();
-		//
-		// entityManager.getTransaction().begin();
-		// entityManager.persist(food2);
-		// entityManager.getTransaction().commit();
-		//
-		// entityManager.getTransaction().begin();
-		// entityManager.persist(purch);
-		// entityManager.getTransaction().commit();
-		//
-		// entityManager.close();
-		//
-		// } finally {
-		// factory.close();
+		// Double totalAmount = 0d;
+		// for (Food food : listFood) {
+		// totalAmount += food.getPrice();
 		// }
+		//
+		// MyOrder purch = new MyOrder(employee, date, listFood, totalAmount);
+		// employee.getPurchase().add(purch);
+		//
+		// System.out.println("Employee");
+		// System.out.println(employee);
+		//
+		// System.out.println("Purch");
+		// System.out.println(employee.getPurchase().get(0));
+		//
+		// System.out.println("Food");
+		// System.out.println(food1);
+
+		 FoodAction action = new FoodAction();
+		System.out.println( action.employeeExists("JsJ"));
+//		 action.addEmployee("JJ", "IT");
+
+		// action.addUnit(food1);
+		// action.addUnit(food2);
+		// action.addUnit(purch);
+
+
 	}
 }

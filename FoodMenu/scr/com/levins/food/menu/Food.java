@@ -22,7 +22,7 @@ public class Food implements FoodMenuUnit {
 	private Date date;
 
 	@Column(name = "value")
-	private String value;
+	private String foodName;
 
 	@Column(name = "singlePrice")
 	private Double price;
@@ -40,12 +40,21 @@ public class Food implements FoodMenuUnit {
 	public Food() {
 	}
 
-	public Food(Date date, String value, Double price, Integer quantity) {
+	public Food(Date date, String foodName, Double price, Integer quantity) {
 		this.date = date;
-		this.value = value;
+		this.foodName = foodName;
 		this.price = price;
 		this.quantity = quantity;
 		this.totalPrice = price * quantity;
+	}
+
+
+
+	public Food(Date date, String foodName, Double price) {
+		super();
+		this.date = date;
+		this.foodName = foodName;
+		this.price = price;
 	}
 
 	public Long getId() {
@@ -65,11 +74,11 @@ public class Food implements FoodMenuUnit {
 	}
 
 	public String getValue() {
-		return value;
+		return foodName;
 	}
 
 	public void setValue(String value) {
-		this.value = value;
+		this.foodName = value;
 	}
 
 	public Double getPrice() {
