@@ -30,11 +30,11 @@ public class Demo {
 	public static void main(String[] args) {
 		Date date = new Date();
 
-		Employee employee = new Employee("ico", "IT", new ArrayList<>());
+		Employee employee = new Employee("Hristo", "IT", new ArrayList<>());
 
 		List<Food> listFood = new ArrayList<Food>();
-		Food food1 = new Food(date, "musaka", 35.2, 1);
-		Food food2 = new Food(date, "chushki", 5.2, 1);
+		Food food1 = new Food(date, "banica", 35.2, 1);
+		Food food2 = new Food(date, "boza", 5.2, 1);
 		listFood.add(food1);
 		listFood.add(food2);
 
@@ -55,32 +55,38 @@ public class Demo {
 		System.out.println("Food");
 		System.out.println(food1);
 
-		EntityManagerFactory factory = Persistence
-				.createEntityManagerFactory("FoodMenu");
-		try {
+		FoodAction action = new FoodAction();
+		action.addUnit(employee);
+		action.addUnit(food1);
+		action.addUnit(food2);
+		action.addUnit(purch);
 
-			EntityManager entityManager = factory.createEntityManager();
-
-			entityManager.getTransaction().begin();
-			entityManager.persist(employee);
-			entityManager.getTransaction().commit();
-
-			entityManager.getTransaction().begin();
-			entityManager.persist(food1);
-			entityManager.getTransaction().commit();
-
-			entityManager.getTransaction().begin();
-			entityManager.persist(food2);
-			entityManager.getTransaction().commit();
-
-			entityManager.getTransaction().begin();
-			entityManager.persist(purch);
-			entityManager.getTransaction().commit();
-
-			entityManager.close();
-
-		} finally {
-			factory.close();
-		}
+		// EntityManagerFactory factory = Persistence
+		// .createEntityManagerFactory("FoodMenu");
+		// try {
+		//
+		// EntityManager entityManager = factory.createEntityManager();
+		//
+		// entityManager.getTransaction().begin();
+		// entityManager.persist(employee);
+		// entityManager.getTransaction().commit();
+		//
+		// entityManager.getTransaction().begin();
+		// entityManager.persist(food1);
+		// entityManager.getTransaction().commit();
+		//
+		// entityManager.getTransaction().begin();
+		// entityManager.persist(food2);
+		// entityManager.getTransaction().commit();
+		//
+		// entityManager.getTransaction().begin();
+		// entityManager.persist(purch);
+		// entityManager.getTransaction().commit();
+		//
+		// entityManager.close();
+		//
+		// } finally {
+		// factory.close();
+		// }
 	}
 }

@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 
 @Entity(name = "levins_emploees")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Employee {
+public class Employee implements FoodMenuUnit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
