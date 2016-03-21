@@ -116,8 +116,7 @@ public class Employee implements FoodMenuUnit {
 
 	@Override
 	public String toString() {
-		return "ID: " + getId() + " Name: " + getName() + " department: "
-				+ getDepartment();
+		return getName() + ";" + getDepartment();
 	}
 
 }

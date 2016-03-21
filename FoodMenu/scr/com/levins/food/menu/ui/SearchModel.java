@@ -1,4 +1,5 @@
 package com.levins.food.menu.ui;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,9 +13,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import com.levins.food.menu.jpa.Employee;
 import com.levins.food.menu.jpa.FoodMenuUnit;
 
-public class ReadWriteModel {
+public class SearchModel {
 	private List<FoodMenuUnit> listOfUnit;
 
 	public List<FoodMenuUnit> getListOfAnimal() {
@@ -24,7 +26,8 @@ public class ReadWriteModel {
 	public void setListOfAnimal(List<FoodMenuUnit> singleLine) {
 		this.listOfUnit = singleLine;
 	}
-//TODO
+
+	// TODO
 	public static List<FoodMenuUnit> read(File inputFilePath)
 			throws FileNotFoundException, IOException {
 		String currentLine;
@@ -34,11 +37,12 @@ public class ReadWriteModel {
 				inputFilePath))) {
 
 			while ((currentLine = br.readLine()) != null) {
-//				String[] animal = currentLine.split(",");
-//				Animal newAnimal = new Animal(animal[0], animal[1], animal[2],
-//						animal[3], animal[4], animal[5], animal[6]);
-//				lineList.add(newAnimal);
-//				System.out.println(newAnimal.toString());
+				// String[] animal = currentLine.split(",");
+				// Animal newAnimal = new Animal(animal[0], animal[1],
+				// animal[2],
+				// animal[3], animal[4], animal[5], animal[6]);
+				// lineList.add(newAnimal);
+				// System.out.println(newAnimal.toString());
 			}
 		}
 
@@ -55,5 +59,14 @@ public class ReadWriteModel {
 		}
 	}
 
+	public static List<FoodMenuUnit> readString(List<String> list) {
+		List<FoodMenuUnit> lineList = new ArrayList<FoodMenuUnit>();
+		for (String record : list) {
+			String[] empRecord = record.split(";");
+			FoodMenuUnit emp = new Employee(empRecord[0], empRecord[1]);
+			lineList.add(emp);
+		}
+		return lineList;
+	}
 
 }

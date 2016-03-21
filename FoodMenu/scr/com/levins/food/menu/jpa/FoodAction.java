@@ -29,12 +29,8 @@ public class FoodAction {
 	public boolean removeEmployee(String employeeName, String employeeDepratment) {
 		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
 		if (employeeExists(employeeName, employeeDepratment)) {
-			Query query = entityManager
-					.createQuery("select e FROM levins_employees e where e.name like (:arg1) and e.department = (:arg2)");
-			query.setParameter("arg1", employeeName);
-			query.setParameter("arg2", employeeDepratment);
-
-			List<Employee> resultList = query.getResultList();
+			List<Employee> resultList = findEmployees(employeeName,
+					employeeDepratment);
 			for (Employee employee : resultList) {
 
 				entityManager.getTransaction().begin();
@@ -47,6 +43,18 @@ public class FoodAction {
 			return false;
 		}
 
+	}
+
+	public List<Employee> findEmployees(String employeeName,
+			String employeeDepratment) {
+		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
+		Query query = entityManager
+				.createQuery("select e FROM levins_employees e where e.name like (:arg1) and e.department = (:arg2)");
+		query.setParameter("arg1", employeeName);
+		query.setParameter("arg2", employeeDepratment);
+
+		List<Employee> resultList = query.getResultList();
+		return resultList;
 	}
 
 	/**
