@@ -26,34 +26,54 @@ public class FoodAction {
 		return today;
 	}
 
-	public void removeEmployee(Long employeeID){
+	public boolean removeEmployee(String employeeName, String employeeDepratment) {
 		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
-		Employee find = entityManager.find(Employee.class, employeeID);
-		entityManager.getTransaction().begin();
-		entityManager.remove(find);
-		entityManager.getTransaction().commit();
+		if (employeeExists(employeeName, employeeDepratment)) {
+			Query query = entityManager
+					.createQuery("select e FROM levins_employees e where e.name like (:arg1) and e.department = (:arg2)");
+			query.setParameter("arg1", employeeName);
+			query.setParameter("arg2", employeeDepratment);
+
+			List<Employee> resultList = query.getResultList();
+			for (Employee employee : resultList) {
+
+				entityManager.getTransaction().begin();
+				entityManager.remove(employee);
+				entityManager.getTransaction().commit();
+			}
+			return true;
+
+		} else {
+			return false;
+		}
+
 	}
+
 	/**
 	 * 
 	 * @param employeeName
 	 * @return true if exist or false to otherwise
 	 */
-	public boolean employeeExists(String employeeName) {
+	private boolean employeeExists(String employeeName,
+			String employeeDepratment) {
 		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
-		  Query query = entityManager.createQuery("select e FROM levins_employees e where e.name like (:arg1)");
-		  query.setParameter("arg1", employeeName);
-		  return query.getResultList().size()>1;
+		Query query = entityManager
+				.createQuery("select e FROM levins_employees e where e.name like (:arg1) and e.department = (:arg2)");
+		query.setParameter("arg1", employeeName);
+		query.setParameter("arg2", employeeDepratment);
+		return query.getResultList().size() > 0;
 	}
+
 	public void addEmployee(String name, String department) {
-		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
-	
-		Employee employee = new Employee(name, department);
-		addUnit(employee);
+		if (!employeeExists(name, department)) {
+			EntityManager entityManager = connection
+					.getEntityManager(UNIT_NAME);
+			Employee employee = new Employee(name, department);
+			addUnit(employee);
+		}
 	}
 
-	public void addFood(String foodName, Double price) {
-
-		Date date = createdDate("dd_MM_yyyy':'HH:mm:");
+	public void addFood(Date date, String foodName, Double price) {
 		Food food = new Food(date, foodName, price);
 		addUnit(food);
 	}

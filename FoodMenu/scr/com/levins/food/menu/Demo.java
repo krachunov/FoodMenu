@@ -57,23 +57,18 @@ public class Demo {
 		//
 		// MyOrder purch = new MyOrder(employee, date, listFood, totalAmount);
 		// employee.getPurchase().add(purch);
-		//
-		// System.out.println("Employee");
-		// System.out.println(employee);
-		//
-		// System.out.println("Purch");
-		// System.out.println(employee.getPurchase().get(0));
-		//
-		// System.out.println("Food");
-		// System.out.println(food1);
 
-		 FoodAction action = new FoodAction();
-		System.out.println( action.employeeExists("JsJ"));
-//		 action.addEmployee("JJ", "IT");
+		FoodAction action = new FoodAction();
 
-		// action.addUnit(food1);
-		// action.addUnit(food2);
-		// action.addUnit(purch);
+//		action.addEmployee("Ico", "IT");
+//		action.addEmployee("Ico", "IT");
+//		action.addEmployee("Tedy", "IT");
+//		action.addEmployee("Sisa", "IT");
+//		action.addEmployee("Ico", "likvid");
+//		action.addEmployee("stefan", "likvid");
+//		action.addEmployee("Ivo", "likvid");
+
+//		 action.removeEmployee("%", "IT");
 
 
 	}
