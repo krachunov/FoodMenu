@@ -1,4 +1,4 @@
-package com.levins.food.menu;
+package com.levins.food.menu.jpa;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+
+import com.levins.food.menu.ui.ControlPanelMenu;
 
 public class Demo {
 
@@ -70,6 +72,7 @@ public class Demo {
 
 //		 action.removeEmployee("%", "IT");
 
-
+ControlPanelMenu menu = new ControlPanelMenu();
+menu.setVisible(true);
 	}
 }

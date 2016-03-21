@@ -1,4 +1,4 @@
-package com.levins.food.menu;
+package com.levins.food.menu.jpa;
 
 import java.util.ArrayList;
 import java.util.List;

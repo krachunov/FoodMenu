@@ -1,4 +1,4 @@
-package com.levins.food.menu;
+package com.levins.food.menu.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
