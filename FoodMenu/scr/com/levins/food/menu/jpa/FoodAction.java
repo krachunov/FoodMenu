@@ -46,11 +46,20 @@ public class FoodAction {
 
 	}
 
+	public List<Food> findFood(String foodName) {
+		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
+		Query query = entityManager.createQuery("select e FROM levins_food e where e.foodName like (:arg1)");
+		query.setParameter("arg1", foodName);
+
+		@SuppressWarnings("unchecked")
+		List<Food> resultList = query.getResultList();
+		return resultList;
+	}
+
 	public List<Employee> findEmployees(String employeeName,
 			String employeeDepratment) {
 		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
-		Query query = entityManager
-				.createQuery("select e FROM levins_employees e where e.name like (:arg1) and e.department = (:arg2)");
+		Query query = entityManager.createQuery("select e FROM levins_employees e where e.name like (:arg1) and e.department like (:arg2)");
 		query.setParameter("arg1", employeeName);
 		query.setParameter("arg2", employeeDepratment);
 
@@ -121,4 +130,5 @@ public class FoodAction {
 		entityManager.close();
 		return list;
 	}
+	
 }

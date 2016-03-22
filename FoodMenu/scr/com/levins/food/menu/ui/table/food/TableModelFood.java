@@ -10,7 +10,7 @@ import com.levins.food.menu.jpa.FoodMenuUnit;
 
 @SuppressWarnings("serial")
 public class TableModelFood extends AbstractTableModel {
-	private static final int COLUMNS_COUNT = 3;
+	private static final int COLUMNS_COUNT = 4;
 	private List<FoodMenuUnit> listToTable;
 
 	public List<FoodMenuUnit> getListToTable() {

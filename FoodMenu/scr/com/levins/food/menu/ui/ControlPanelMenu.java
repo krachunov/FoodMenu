@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JSeparator;
 
 import com.levins.food.menu.ui.table.employee.RemoveEmployeeWindow;
+import com.levins.food.menu.ui.table.food.RemoveFoodWindow;
 
 public class ControlPanelMenu extends JFrame {
 	private static final long serialVersionUID = -7500945945511983948L;
@@ -142,6 +143,12 @@ public class ControlPanelMenu extends JFrame {
 		getContentPane().add(btnExportOrderBy, gbc_btnExportOrderBy);
 
 		JButton btnRemoveFood = new JButton("Remove Food");
+		btnRemoveFood.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RemoveFoodWindow removeFood = new RemoveFoodWindow();
+				removeFood.setVisible(true);
+			}
+		});
 		btnRemoveFood.setPreferredSize(new Dimension(130, 30));
 		GridBagConstraints gbc_btnRemoveFood = new GridBagConstraints();
 		gbc_btnRemoveFood.anchor = GridBagConstraints.WEST;

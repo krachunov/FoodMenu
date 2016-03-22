@@ -6,6 +6,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.levins.food.menu.jpa.Employee;
+import com.levins.food.menu.jpa.Food;
 import com.levins.food.menu.jpa.FoodAction;
 import com.levins.food.menu.jpa.FoodMenuUnit;
 import com.levins.food.menu.ui.ConfirmWindow;
@@ -33,10 +35,10 @@ public class RemoveFoodWindow extends JFrame {
 	private TableModelFood tableModel;
 	private JButton btnDelete;
 	private List<FoodMenuUnit> listToTable;
-	private JLabel lblName;
-	private JLabel lblDepartment;
-	protected JTextField nameTextField;
-	protected JTextField departmentTextField;
+	private JLabel lblFood;
+	private JLabel lblPrice;
+	protected JTextField foodTextField;
+	protected JTextField priceTextField;
 
 	public TableModelFood getTableModel() {
 		return tableModel;
@@ -71,6 +73,7 @@ public class RemoveFoodWindow extends JFrame {
 				Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 		tableModel = new TableModelFood();
+
 		JButton btnFind = new JButton("Find");
 		btnFind.addActionListener(new ActionListener() {
 
@@ -79,42 +82,43 @@ public class RemoveFoodWindow extends JFrame {
 
 				List<String> resultFromDataBase = new ArrayList<String>();
 
-				String searchName = nameTextField.getText().trim().equals("") ? "%"
-						: nameTextField.getText().trim();
-				String searchDepartment = departmentTextField.getText().trim()
-						.equals("") ? "%" : departmentTextField.getText()
-						.trim();
+				String searchName = foodTextField.getText().trim().equals("") ? "%"
+						: foodTextField.getText().trim();
+				String searchPrice = priceTextField.getText().trim().equals("") ? "%"
+						: priceTextField.getText().trim();
 
-				// TODO need to check
 				FoodAction action = new FoodAction();
-				List<Employee> findEmployees = action.findEmployees(searchName,
-						searchDepartment);
-				for (Employee employee : findEmployees) {
-					resultFromDataBase.add(employee.toString());
+				List<Food> findFood = action.findFood(searchName);
+				for (Food food : findFood) {
+					resultFromDataBase.add(food.toString());
 				}
 
-				tableModel.setListToTable(SearchModelFood
-						.readString(resultFromDataBase));
+				try {
+					tableModel.setListToTable(SearchModelFood
+							.readString(resultFromDataBase));
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 
-		lblName = new JLabel("Name");
-		GridBagConstraints gbc_lblName = new GridBagConstraints();
-		gbc_lblName.insets = new Insets(0, 0, 5, 5);
-		gbc_lblName.anchor = GridBagConstraints.EAST;
-		gbc_lblName.gridx = 0;
-		gbc_lblName.gridy = 0;
-		contentPane.add(lblName, gbc_lblName);
+		lblFood = new JLabel("Name");
+		GridBagConstraints gbc_lblFood = new GridBagConstraints();
+		gbc_lblFood.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFood.anchor = GridBagConstraints.EAST;
+		gbc_lblFood.gridx = 0;
+		gbc_lblFood.gridy = 0;
+		contentPane.add(lblFood, gbc_lblFood);
 
-		nameTextField = new JTextField();
+		foodTextField = new JTextField();
 
-		GridBagConstraints gbc_searchUserTextField = new GridBagConstraints();
-		gbc_searchUserTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_searchUserTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_searchUserTextField.gridx = 1;
-		gbc_searchUserTextField.gridy = 0;
-		contentPane.add(nameTextField, gbc_searchUserTextField);
-		nameTextField.setColumns(10);
+		GridBagConstraints gbc_foodTextField = new GridBagConstraints();
+		gbc_foodTextField.insets = new Insets(0, 0, 5, 5);
+		gbc_foodTextField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_foodTextField.gridx = 1;
+		gbc_foodTextField.gridy = 0;
+		contentPane.add(foodTextField, gbc_foodTextField);
+		foodTextField.setColumns(10);
 		GridBagConstraints gbc_btnFind = new GridBagConstraints();
 		gbc_btnFind.anchor = GridBagConstraints.WEST;
 		gbc_btnFind.insets = new Insets(0, 0, 5, 0);
@@ -122,22 +126,22 @@ public class RemoveFoodWindow extends JFrame {
 		gbc_btnFind.gridy = 0;
 		contentPane.add(btnFind, gbc_btnFind);
 
-		lblDepartment = new JLabel("Department");
-		GridBagConstraints gbc_lblDepartment = new GridBagConstraints();
-		gbc_lblDepartment.anchor = GridBagConstraints.EAST;
-		gbc_lblDepartment.insets = new Insets(0, 0, 5, 5);
-		gbc_lblDepartment.gridx = 0;
-		gbc_lblDepartment.gridy = 1;
-		contentPane.add(lblDepartment, gbc_lblDepartment);
+		lblPrice = new JLabel("Department");
+		GridBagConstraints gbc_lblPrice = new GridBagConstraints();
+		gbc_lblPrice.anchor = GridBagConstraints.EAST;
+		gbc_lblPrice.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPrice.gridx = 0;
+		gbc_lblPrice.gridy = 1;
+		contentPane.add(lblPrice, gbc_lblPrice);
 
-		departmentTextField = new JTextField();
-		GridBagConstraints gbc_egnTextField = new GridBagConstraints();
-		gbc_egnTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_egnTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_egnTextField.gridx = 1;
-		gbc_egnTextField.gridy = 1;
-		contentPane.add(departmentTextField, gbc_egnTextField);
-		departmentTextField.setColumns(10);
+		priceTextField = new JTextField();
+		GridBagConstraints gbc_priceTextField = new GridBagConstraints();
+		gbc_priceTextField.insets = new Insets(0, 0, 5, 5);
+		gbc_priceTextField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_priceTextField.gridx = 1;
+		gbc_priceTextField.gridy = 1;
+		contentPane.add(priceTextField, gbc_priceTextField);
+		priceTextField.setColumns(10);
 
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();

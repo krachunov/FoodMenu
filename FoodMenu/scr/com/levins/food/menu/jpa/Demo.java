@@ -12,7 +12,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-
 import com.levins.food.menu.ui.ControlPanelMenu;
 
 public class Demo {
@@ -49,7 +48,7 @@ public class Demo {
 		//
 		// List<Food> listFood = new ArrayList<Food>();
 		// Food food1 = new Food(date, "banica", 35.2, 1);
-		// Food food2 = new Food(date, "boza", 5.2, 1);
+		// FoodAction action = new FoodAction();
 		// listFood.add(food1);
 		// listFood.add(food2);
 		//
@@ -71,10 +70,9 @@ public class Demo {
 
 		// action.removeEmployee("%", "IT");
 
-		FoodAction action = new FoodAction();
 
 		ControlPanelMenu menu = new ControlPanelMenu();
 		menu.setVisible(true);
-		
+
 	}
 }
