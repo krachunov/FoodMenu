@@ -43,12 +43,29 @@ public class FoodAction {
 		} else {
 			return false;
 		}
+	}
 
+	public boolean removeFood(String food) {
+		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
+		if (foodExists(food)) {
+			List<Food> resultList = findFood(food);
+			for (Food currentFood : resultList) {
+
+				entityManager.getTransaction().begin();
+				entityManager.remove(currentFood);
+				entityManager.getTransaction().commit();
+			}
+			return true;
+
+		} else {
+			return false;
+		}
 	}
 
 	public List<Food> findFood(String foodName) {
 		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
-		Query query = entityManager.createQuery("select e FROM levins_food e where e.foodName like (:arg1)");
+		Query query = entityManager
+				.createQuery("select e FROM levins_food e where e.foodName like (:arg1)");
 		query.setParameter("arg1", foodName);
 
 		@SuppressWarnings("unchecked")
@@ -59,7 +76,8 @@ public class FoodAction {
 	public List<Employee> findEmployees(String employeeName,
 			String employeeDepratment) {
 		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
-		Query query = entityManager.createQuery("select e FROM levins_employees e where e.name like (:arg1) and e.department like (:arg2)");
+		Query query = entityManager
+				.createQuery("select e FROM levins_employees e where e.name like (:arg1) and e.department like (:arg2)");
 		query.setParameter("arg1", employeeName);
 		query.setParameter("arg2", employeeDepratment);
 
@@ -80,6 +98,14 @@ public class FoodAction {
 				.createQuery("select e FROM levins_employees e where e.name like (:arg1) and e.department = (:arg2)");
 		query.setParameter("arg1", employeeName);
 		query.setParameter("arg2", employeeDepratment);
+		return query.getResultList().size() > 0;
+	}
+
+	private boolean foodExists(String food) {
+		EntityManager entityManager = connection.getEntityManager(UNIT_NAME);
+		Query query = entityManager
+				.createQuery("select e FROM levins_food e where e.foodName like (:arg1)");
+		query.setParameter("arg1", food);
 		return query.getResultList().size() > 0;
 	}
 
@@ -130,5 +156,5 @@ public class FoodAction {
 		entityManager.close();
 		return list;
 	}
-	
+
 }

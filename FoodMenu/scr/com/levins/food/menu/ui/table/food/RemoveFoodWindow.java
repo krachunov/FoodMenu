@@ -94,8 +94,7 @@ public class RemoveFoodWindow extends JFrame {
 				}
 
 				try {
-					tableModel.setListToTable(SearchModelFood
-							.readString(resultFromDataBase));
+					tableModel.setListToTable(SearchModelFood.readString(resultFromDataBase));
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}

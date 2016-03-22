@@ -58,7 +58,7 @@ public class ControlPanelMenu extends JFrame {
 		btnAddemployee.setPreferredSize(new Dimension(130, 30));
 		btnAddemployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CreateSingleUser createUser = new CreateSingleUser();
+				AddSingleUser createUser = new AddSingleUser();
 				createUser.setVisible(true);
 			}
 		});

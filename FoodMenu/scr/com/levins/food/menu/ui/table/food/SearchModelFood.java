@@ -12,6 +12,7 @@ import java.util.Queue;
 
 import com.levins.food.menu.jpa.Employee;
 import com.levins.food.menu.jpa.Food;
+import com.levins.food.menu.jpa.FoodAction;
 import com.levins.food.menu.jpa.FoodMenuUnit;
 
 public class SearchModelFood {
@@ -35,15 +36,21 @@ public class SearchModelFood {
 		}
 	}
 
-	public static List<FoodMenuUnit> readString(List<String> list) throws ParseException {
+	public static List<FoodMenuUnit> readString(List<String> list)
+			throws ParseException {
 		List<FoodMenuUnit> lineList = new ArrayList<FoodMenuUnit>();
 		for (String record : list) {
 			String[] foodRecord = record.split(";");
-			
-			SimpleDateFormat formatter = new SimpleDateFormat("EEEE, dd-MM-yyyy hh:mm:ss");
+
+			SimpleDateFormat formatter = new SimpleDateFormat(
+					"dd-MM-yyyy hh:mm:ss");
 			Date parsedDate = formatter.parse(foodRecord[1]);
-			
-			FoodMenuUnit emp = new Food(parsedDate,foodRecord[1],Double.valueOf(foodRecord[2]));
+
+			FoodAction action = new FoodAction();
+			// TODO
+
+			FoodMenuUnit emp = new Food(parsedDate, foodRecord[2],
+					Double.valueOf(foodRecord[3]));
 			lineList.add(emp);
 		}
 		return lineList;

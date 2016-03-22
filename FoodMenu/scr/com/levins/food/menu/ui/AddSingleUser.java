@@ -18,13 +18,13 @@ import com.levins.food.menu.jpa.FoodAction;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class CreateSingleUser extends JFrame {
-	private CreateSingleUser currentWindow = this;
+public class AddSingleUser extends JFrame {
+	private AddSingleUser currentWindow = this;
 	private JTextField txtName;
 	private JTextField txtDepartment;
 	private JButton btnAdd;
 
-	public CreateSingleUser() {
+	public AddSingleUser() {
 		setTitle("Add Employee");
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0 };

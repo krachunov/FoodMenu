@@ -21,12 +21,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.regex.Matcher;
 
 import javax.swing.JPanel;
 
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @SuppressWarnings("serial")
 public class AddSingleFood extends JFrame {
@@ -119,18 +123,32 @@ public class AddSingleFood extends JFrame {
 		listenerAddButn.addTextField(txtFood);
 		listenerAddButn.addTextField(txtPrice);
 		btnAdd.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
-				FoodAction action = new FoodAction();
-				Date dateFromPicker = getDateValueFromPicker(datePicker);
-				action.addFood(dateFromPicker, txtFood.getText(),
-						Double.valueOf(txtPrice.getText()));
-				currentWindow.dispose();
+
+				if (validatePrice(String.valueOf(txtPrice.getText()))) {
+					FoodAction action = new FoodAction();
+					Date dateFromPicker = getDateValueFromPicker(datePicker);
+					action.addFood(dateFromPicker, txtFood.getText(),
+							Double.valueOf(txtPrice.getText()));
+					txtFood.setText("");
+					txtPrice.setText("");
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"The price is not correct.", "Incorrect price",
+							JOptionPane.ERROR_MESSAGE);
+				}
+
+			}
+
+			public boolean validatePrice(String price) {
+				String priceRegex = "(\\d+\\.?)+";
+				boolean matches = price.matches(priceRegex);
+				return matches;
 			}
 
 			private Date getDateValueFromPicker(JDatePickerImpl datePicker) {
 				Date selectedDate = (Date) datePicker.getModel().getValue();
-				// DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-				// String reportDate = df.format(selectedDate);
 				return selectedDate;
 			}
 		});

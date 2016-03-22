@@ -40,39 +40,21 @@ public class Demo {
 		// return reportDate;
 		return today;
 	}
-
 	public static void main(String[] args) {
 		Date date = createdDate("dd_MM_yyyy':'HH:mm:");
 
-		// Employee employee = new Employee("Teodor", "IT", new ArrayList<>());
-		//
-		// List<Food> listFood = new ArrayList<Food>();
-		// Food food1 = new Food(date, "banica", 35.2, 1);
-		// FoodAction action = new FoodAction();
-		// listFood.add(food1);
-		// listFood.add(food2);
-		//
 		// Double totalAmount = 0d;
 		// for (Food food : listFood) {
 		// totalAmount += food.getPrice();
 		// }
-		//
-		// MyOrder purch = new MyOrder(employee, date, listFood, totalAmount);
+		// // MyOrder purch = new MyOrder(employee, date, listFood,
+		// totalAmount);
 		// employee.getPurchase().add(purch);
-
-		// action.addEmployee("Ico", "IT");
-		// action.addEmployee("Ico", "IT");
-		// action.addEmployee("Tedy", "IT");
-		// action.addEmployee("Sisa", "IT");
-		// action.addEmployee("Ico", "likvid");
-		// action.addEmployee("stefan", "likvid");
-		// action.addEmployee("Ivo", "likvid");
-
 		// action.removeEmployee("%", "IT");
-
 
 		ControlPanelMenu menu = new ControlPanelMenu();
 		menu.setVisible(true);
+		
 
 	}
 }

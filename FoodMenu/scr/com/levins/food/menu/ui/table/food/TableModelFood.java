@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import com.levins.food.menu.jpa.Employee;
+import com.levins.food.menu.jpa.Food;
 import com.levins.food.menu.jpa.FoodAction;
 import com.levins.food.menu.jpa.FoodMenuUnit;
 
@@ -37,23 +38,25 @@ public class TableModelFood extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		@SuppressWarnings({ "rawtypes", "unused" })
 		List list = getListToTable();
-		Employee singleResult = (Employee) listToTable.get(rowIndex);
+		Food singleResult = (Food) listToTable.get(rowIndex);
 
 		switch (columnIndex) {
 		case 0:
 			return singleResult.getId();
 		case 1:
-			return singleResult.getName();
+			return singleResult.getDate();
 		case 2:
-			return singleResult.getDepartment();
+			return singleResult.getValue();
+		case 3:
+			return singleResult.getPrice();
 		}
 		return null;
 	}
 
 	public void deleteRecord(int index) {
-		Employee remove = (Employee) listToTable.remove(index);
+		Food remove = (Food) listToTable.remove(index);
 		FoodAction action = new FoodAction();
-		action.removeEmployee(remove.getName(), remove.getDepartment());
+		action.removeFood(remove.getValue());
 		fireTableDataChanged();
 	}
 }
