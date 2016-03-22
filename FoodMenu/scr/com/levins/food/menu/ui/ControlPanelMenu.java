@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JSeparator;
 
 public class ControlPanelMenu extends JFrame {
+	private static final long serialVersionUID = -7500945945511983948L;
+
 	public ControlPanelMenu() {
 		setTitle("Food Order");
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -77,6 +79,8 @@ public class ControlPanelMenu extends JFrame {
 		btnAddfood.setPreferredSize(new Dimension(130, 30));
 		btnAddfood.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AddSingleFood singleFood = new AddSingleFood();
+				singleFood.setVisible(true);
 			}
 		});
 		GridBagConstraints gbc_btnAddfood = new GridBagConstraints();

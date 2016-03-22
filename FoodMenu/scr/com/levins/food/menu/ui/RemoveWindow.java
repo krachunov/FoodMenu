@@ -6,13 +6,9 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -29,6 +25,7 @@ import com.levins.food.menu.jpa.FoodMenuUnit;
 
 @SuppressWarnings("serial")
 public class RemoveWindow extends JFrame {
+	@SuppressWarnings("unused")
 	private SearchModel model;
 	private JPanel contentPane;
 	private JTable table;
@@ -58,8 +55,6 @@ public class RemoveWindow extends JFrame {
 	 * @param insis
 	 */
 	public RemoveWindow() {
-		// this.insis = insis;
-		RemoveWindow parrentWindow = this;
 
 		model = new SearchModel();
 		setBounds(100, 100, 450, 300);
@@ -83,9 +78,12 @@ public class RemoveWindow extends JFrame {
 
 				List<String> resultFromDataBase = new ArrayList<String>();
 
-				String searchName = nameTextField.getText().trim().equals("") ? "%": nameTextField.getText().trim();
-				String searchDepartment = departmentTextField.getText().trim().equals("") ? "%" : departmentTextField.getText().trim();
-				
+				String searchName = nameTextField.getText().trim().equals("") ? "%"
+						: nameTextField.getText().trim();
+				String searchDepartment = departmentTextField.getText().trim()
+						.equals("") ? "%" : departmentTextField.getText()
+						.trim();
+
 				// TODO need to check
 				FoodAction action = new FoodAction();
 				List<Employee> findEmployees = action.findEmployees(searchName,
@@ -94,7 +92,8 @@ public class RemoveWindow extends JFrame {
 					resultFromDataBase.add(employee.toString());
 				}
 
-				tableModel.setListToTable(SearchModel.readString(resultFromDataBase));
+				tableModel.setListToTable(SearchModel
+						.readString(resultFromDataBase));
 			}
 		});
 
@@ -180,8 +179,9 @@ public class RemoveWindow extends JFrame {
 		int selectedRow = table.getSelectedRow();
 		if (selectedRow != -1) {
 			ConfirmWindow confirm = new ConfirmWindow();
-			
-//			String inputSingleUser = tableModel.getRecord(selectedRow);
+			if (confirm.isState()) {
+				tableModel.deleteRecord(selectedRow);
+			}
 
 		}
 

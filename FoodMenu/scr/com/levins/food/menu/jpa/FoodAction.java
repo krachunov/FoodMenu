@@ -21,6 +21,7 @@ public class FoodAction {
 
 	// "dd_MM_yyyy" "dd_MM_yyyy':'HH:mm:"
 	public static Date createdDate(String format) {
+		@SuppressWarnings("unused")
 		DateFormat df = new SimpleDateFormat(format);
 		Date today = Calendar.getInstance().getTime();
 		return today;
@@ -53,6 +54,7 @@ public class FoodAction {
 		query.setParameter("arg1", employeeName);
 		query.setParameter("arg2", employeeDepratment);
 
+		@SuppressWarnings("unchecked")
 		List<Employee> resultList = query.getResultList();
 		return resultList;
 	}
@@ -74,6 +76,7 @@ public class FoodAction {
 
 	public void addEmployee(String name, String department) {
 		if (!employeeExists(name, department)) {
+			@SuppressWarnings("unused")
 			EntityManager entityManager = connection
 					.getEntityManager(UNIT_NAME);
 			Employee employee = new Employee(name, department);
@@ -98,6 +101,7 @@ public class FoodAction {
 	@SuppressWarnings("unchecked")
 	public List<FoodMenuUnit> getAllOrderByDate(String searchDate)
 			throws ClassNotFoundException {
+		@SuppressWarnings("unused")
 		EntityManagerFactory factory = Persistence
 				.createEntityManagerFactory("contact");
 

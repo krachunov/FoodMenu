@@ -1,11 +1,11 @@
 package com.levins.food.menu.ui;
 
 import java.util.List;
-import java.util.Queue;
 
 import javax.swing.table.AbstractTableModel;
 
 import com.levins.food.menu.jpa.Employee;
+import com.levins.food.menu.jpa.FoodAction;
 import com.levins.food.menu.jpa.FoodMenuUnit;
 
 @SuppressWarnings("serial")
@@ -35,6 +35,7 @@ public class TableModel extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
+		@SuppressWarnings({ "rawtypes", "unused" })
 		List list = getListToTable();
 		Employee singleResult = (Employee) listToTable.get(rowIndex);
 
@@ -50,7 +51,9 @@ public class TableModel extends AbstractTableModel {
 	}
 
 	public void deleteRecord(int index) {
-		listToTable.remove(index);
+		Employee remove = (Employee) listToTable.remove(index);
+		FoodAction action = new FoodAction();
+		action.removeEmployee(remove.getName(), remove.getDepartment());
 		fireTableDataChanged();
 	}
 }

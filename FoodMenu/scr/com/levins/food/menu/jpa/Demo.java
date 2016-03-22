@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+
 import com.levins.food.menu.ui.ControlPanelMenu;
 
 public class Demo {
@@ -60,19 +61,20 @@ public class Demo {
 		// MyOrder purch = new MyOrder(employee, date, listFood, totalAmount);
 		// employee.getPurchase().add(purch);
 
+		// action.addEmployee("Ico", "IT");
+		// action.addEmployee("Ico", "IT");
+		// action.addEmployee("Tedy", "IT");
+		// action.addEmployee("Sisa", "IT");
+		// action.addEmployee("Ico", "likvid");
+		// action.addEmployee("stefan", "likvid");
+		// action.addEmployee("Ivo", "likvid");
+
+		// action.removeEmployee("%", "IT");
+
 		FoodAction action = new FoodAction();
 
-//		action.addEmployee("Ico", "IT");
-//		action.addEmployee("Ico", "IT");
-//		action.addEmployee("Tedy", "IT");
-//		action.addEmployee("Sisa", "IT");
-//		action.addEmployee("Ico", "likvid");
-//		action.addEmployee("stefan", "likvid");
-//		action.addEmployee("Ivo", "likvid");
-
-//		 action.removeEmployee("%", "IT");
-
-ControlPanelMenu menu = new ControlPanelMenu();
-menu.setVisible(true);
+		ControlPanelMenu menu = new ControlPanelMenu();
+		menu.setVisible(true);
+		
 	}
 }
