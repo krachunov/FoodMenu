@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 
+import com.levins.food.menu.ui.table.employee.RemoveEmployeeWindow;
+
 public class ControlPanelMenu extends JFrame {
 	private static final long serialVersionUID = -7500945945511983948L;
 
@@ -102,7 +104,7 @@ public class ControlPanelMenu extends JFrame {
 		JButton btnRemoveEmployee = new JButton("Remove Employee");
 		btnRemoveEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RemoveWindow removeWindow = new RemoveWindow();
+				RemoveEmployeeWindow removeWindow = new RemoveEmployeeWindow();
 				removeWindow.setVisible(true);
 			}
 		});

@@ -27,15 +27,15 @@ public class Food implements FoodMenuUnit {
 	@Column(name = "singlePrice")
 	private Double price;
 
-	@Column(name = "count")
-	private Integer quantity;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "food_id")
-	private MyOrder order;
-
-	@Column(name = "totalPrice")
-	private Double totalPrice;
+//	@Column(name = "count")
+//	private Integer quantity;
+//
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "food_id")
+//	private MyOrder order;
+//
+//	@Column(name = "totalPrice")
+//	private Double totalPrice;
 
 	public Food() {
 	}
@@ -44,8 +44,8 @@ public class Food implements FoodMenuUnit {
 		this.date = date;
 		this.foodName = foodName;
 		this.price = price;
-		this.quantity = quantity;
-		this.totalPrice = price * quantity;
+//		this.quantity = quantity;
+//		this.totalPrice = price * quantity;
 	}
 
 
@@ -89,18 +89,17 @@ public class Food implements FoodMenuUnit {
 		this.price = price;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
+//	public Integer getQuantity() {
+//		return quantity;
+//	}
+//
+//	public void setQuantity(Integer quantity) {
+//		this.quantity = quantity;
+//	}
 
 	@Override
 	public String toString() {
 		return "ID: " + getId() + " Date: " + getDate() + " Value "
-				+ getValue() + " price " + getPrice() + " quantity "
-				+ getQuantity();
+				+ getValue() + " price " + getPrice() ;
 	}
 }

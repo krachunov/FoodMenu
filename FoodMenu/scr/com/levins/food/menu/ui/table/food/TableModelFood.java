@@ -1,4 +1,4 @@
-package com.levins.food.menu.ui;
+package com.levins.food.menu.ui.table.food;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import com.levins.food.menu.jpa.FoodAction;
 import com.levins.food.menu.jpa.FoodMenuUnit;
 
 @SuppressWarnings("serial")
-public class TableModel extends AbstractTableModel {
+public class TableModelFood extends AbstractTableModel {
 	private static final int COLUMNS_COUNT = 3;
 	private List<FoodMenuUnit> listToTable;
 

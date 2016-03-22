@@ -1,4 +1,4 @@
-package com.levins.food.menu.ui;
+package com.levins.food.menu.ui.table.employee;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -10,7 +10,7 @@ import java.util.Queue;
 import com.levins.food.menu.jpa.Employee;
 import com.levins.food.menu.jpa.FoodMenuUnit;
 
-public class SearchModel {
+public class SearchModelEmployee {
 	private List<FoodMenuUnit> listOfUnit;
 
 	public List<FoodMenuUnit> getListOfAnimal() {

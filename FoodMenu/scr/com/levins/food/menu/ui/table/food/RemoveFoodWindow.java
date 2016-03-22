@@ -1,4 +1,4 @@
-package com.levins.food.menu.ui;
+package com.levins.food.menu.ui.table.food;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -22,14 +22,15 @@ import javax.swing.border.EmptyBorder;
 import com.levins.food.menu.jpa.Employee;
 import com.levins.food.menu.jpa.FoodAction;
 import com.levins.food.menu.jpa.FoodMenuUnit;
+import com.levins.food.menu.ui.ConfirmWindow;
 
 @SuppressWarnings("serial")
-public class RemoveWindow extends JFrame {
+public class RemoveFoodWindow extends JFrame {
 	@SuppressWarnings("unused")
-	private SearchModel model;
+	private SearchModelFood model;
 	private JPanel contentPane;
 	private JTable table;
-	private TableModel tableModel;
+	private TableModelFood tableModel;
 	private JButton btnDelete;
 	private List<FoodMenuUnit> listToTable;
 	private JLabel lblName;
@@ -37,11 +38,11 @@ public class RemoveWindow extends JFrame {
 	protected JTextField nameTextField;
 	protected JTextField departmentTextField;
 
-	public TableModel getTableModel() {
+	public TableModelFood getTableModel() {
 		return tableModel;
 	}
 
-	public void setTableModel(TableModel tableModel) {
+	public void setTableModel(TableModelFood tableModel) {
 		this.tableModel = tableModel;
 	}
 
@@ -54,9 +55,9 @@ public class RemoveWindow extends JFrame {
 	 * 
 	 * @param insis
 	 */
-	public RemoveWindow() {
+	public RemoveFoodWindow() {
 
-		model = new SearchModel();
+		model = new SearchModelFood();
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -69,7 +70,7 @@ public class RemoveWindow extends JFrame {
 		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0,
 				Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		tableModel = new TableModel();
+		tableModel = new TableModelFood();
 		JButton btnFind = new JButton("Find");
 		btnFind.addActionListener(new ActionListener() {
 
@@ -92,7 +93,7 @@ public class RemoveWindow extends JFrame {
 					resultFromDataBase.add(employee.toString());
 				}
 
-				tableModel.setListToTable(SearchModel
+				tableModel.setListToTable(SearchModelFood
 						.readString(resultFromDataBase));
 			}
 		});
