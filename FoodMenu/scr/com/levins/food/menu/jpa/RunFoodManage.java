@@ -2,7 +2,6 @@ package com.levins.food.menu.jpa;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +13,7 @@ import javax.persistence.Query;
 
 import com.levins.food.menu.ui.ControlPanelMenu;
 
-public class Demo {
+public class RunFoodManage {
 
 	public static List<Employee> getAllEmployees()
 			throws ClassNotFoundException {
@@ -33,6 +32,7 @@ public class Demo {
 	}
 
 	// "dd_MM_yyyy" "dd_MM_yyyy':'HH:mm:"
+	@SuppressWarnings("unused")
 	public static Date createdDate(String format) {
 		DateFormat df = new SimpleDateFormat(format);
 		Date today = Calendar.getInstance().getTime();
@@ -40,8 +40,8 @@ public class Demo {
 		// return reportDate;
 		return today;
 	}
+
 	public static void main(String[] args) {
-		Date date = createdDate("dd_MM_yyyy':'HH:mm:");
 
 		// Double totalAmount = 0d;
 		// for (Food food : listFood) {
