@@ -7,7 +7,7 @@
 		<class>com.levins.food.menu.jpa.Employee</class>
 		<class>com.levins.food.menu.jpa.MyOrder</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.12.124:3306/drupal" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.12.124:3306/drupal?characterEncoding=utf8" />
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
 			<property name="javax.persistence.jdbc.user" value="drupal" />
 			<property name="javax.persistence.jdbc.password" value="dru_PAL" />

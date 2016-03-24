@@ -1,4 +1,4 @@
-package com.levins.food.menu.jpa;
+package com.levins.food.menu.run;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.levins.food.menu.jpa.Employee;
 import com.levins.food.menu.ui.ControlPanelMenu;
 
 public class RunFoodManage {
