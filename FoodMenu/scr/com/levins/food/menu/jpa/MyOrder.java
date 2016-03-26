@@ -31,7 +31,10 @@ public class MyOrder implements FoodMenuUnit {
 	// @OneToMany(targetEntity = Food.class, mappedBy = "order", fetch =
 	// FetchType.EAGER)
 	@OneToMany
-	@JoinTable(name = "levins_order", joinColumns = { @JoinColumn(name = "order_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "food_id", referencedColumnName = "id", unique = true) })
+	@JoinTable(
+			name = "levins_order", 
+			joinColumns = { @JoinColumn(name = "order_id", referencedColumnName = "id") }, 
+			inverseJoinColumns = { @JoinColumn(name = "food_id", referencedColumnName = "id", unique = true) })
 	private List<Food> listFood;
 
 	@Column(name = "totalPrice")

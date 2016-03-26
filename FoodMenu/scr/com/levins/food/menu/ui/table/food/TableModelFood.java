@@ -47,8 +47,8 @@ public class TableModelFood extends AbstractTableModel {
 			return singleResult.getDate();
 		case 2:
 			return singleResult.getValue();
-		case 3:
-			return singleResult.getPrice();
+//		case 3:
+//			return singleResult.getPrice();
 		}
 		return null;
 	}

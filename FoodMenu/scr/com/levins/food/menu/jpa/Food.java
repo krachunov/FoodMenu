@@ -1,6 +1,7 @@
 package com.levins.food.menu.jpa;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "levins_food")
@@ -26,16 +29,16 @@ public class Food implements FoodMenuUnit {
 
 	@Column(name = "singlePrice")
 	private Double price;
+	//
+	@Column(name = "count")
+	private Integer quantity;
 
-	 @Column(name = "count")
-	 private Integer quantity;
-	
-	 @ManyToOne(fetch = FetchType.EAGER)
-	 @JoinColumn(name = "food_id")
-	 private MyOrder order;
-	
-	 @Column(name = "totalPrice")
-	 private Double totalPrice;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "food_id")
+	private MyOrder order;
+
+	// @Column(name = "totalPrice")
+	// private Double totalPrice;
 
 	public Food() {
 	}
@@ -44,8 +47,8 @@ public class Food implements FoodMenuUnit {
 		this.date = date;
 		this.foodName = foodName;
 		this.price = price;
-		this.quantity = quantity;
-		this.totalPrice = price * quantity;
+		// this.quantity = quantity;
+		// this.totalPrice = price * quantity;
 	}
 
 	public Food(Date date, String foodName, Double price) {
@@ -53,6 +56,14 @@ public class Food implements FoodMenuUnit {
 		this.date = date;
 		this.foodName = foodName;
 		this.price = price;
+	}
+
+	public MyOrder getOrder() {
+		return order;
+	}
+
+	public void setOrder(MyOrder order) {
+		this.order = order;
 	}
 
 	public Long getId() {
@@ -87,13 +98,13 @@ public class Food implements FoodMenuUnit {
 		this.price = price;
 	}
 
-	 public Integer getQuantity() {
-	 return quantity;
-	 }
-	
-	 public void setQuantity(Integer quantity) {
-	 this.quantity = quantity;
-	 }
+	// public Integer getQuantity() {
+	// return quantity;
+	// }
+	//
+	// public void setQuantity(Integer quantity) {
+	// this.quantity = quantity;
+	// }
 
 	@Override
 	public String toString() {
