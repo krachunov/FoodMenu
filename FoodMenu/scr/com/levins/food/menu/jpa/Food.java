@@ -5,17 +5,21 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
 
 @Entity(name = "levins_food")
 public class Food implements FoodMenuUnit {
+	public static final int INDEX_ID = 0;
+	public static final int INDEX_DATE = 1;
+	public static final int INDEX_FOOD_NAME = 2;
+	public static final int INDEX_PIRCE = 3;
+	public static final int INDEX_QUANTITY = 4;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
@@ -29,16 +33,12 @@ public class Food implements FoodMenuUnit {
 
 	@Column(name = "singlePrice")
 	private Double price;
-	//
+
 	@Column(name = "count")
 	private Integer quantity;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "food_id")
-	private MyOrder order;
-
-	// @Column(name = "totalPrice")
-	// private Double totalPrice;
+	@ManyToMany(mappedBy = "listFood")
+	private List<MyOrder> order;
 
 	public Food() {
 	}
@@ -47,8 +47,16 @@ public class Food implements FoodMenuUnit {
 		this.date = date;
 		this.foodName = foodName;
 		this.price = price;
-		// this.quantity = quantity;
-		// this.totalPrice = price * quantity;
+		this.quantity = quantity;
+	}
+
+	public Food(Long id, Date date, String foodName, Double price,
+			Integer quantity) {
+		this.id = id;
+		this.date = date;
+		this.foodName = foodName;
+		this.price = price;
+		this.quantity = quantity;
 	}
 
 	public Food(Date date, String foodName, Double price) {
@@ -56,14 +64,6 @@ public class Food implements FoodMenuUnit {
 		this.date = date;
 		this.foodName = foodName;
 		this.price = price;
-	}
-
-	public MyOrder getOrder() {
-		return order;
-	}
-
-	public void setOrder(MyOrder order) {
-		this.order = order;
 	}
 
 	public Long getId() {
@@ -98,16 +98,18 @@ public class Food implements FoodMenuUnit {
 		this.price = price;
 	}
 
-	// public Integer getQuantity() {
-	// return quantity;
-	// }
-	//
-	// public void setQuantity(Integer quantity) {
-	// this.quantity = quantity;
-	// }
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
 	@Override
 	public String toString() {
-		return getId() + ";" + getDate() + ";" + getValue() + ";" + getPrice();
+		return getId() + ";" + getDate() + ";" + getValue() + ";" + getPrice()
+				+ ";" + getQuantity();
 	}
+
 }
